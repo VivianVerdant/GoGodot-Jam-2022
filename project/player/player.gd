@@ -1,33 +1,38 @@
+tool
+class_name Player
 extends KinematicBody2D
 
-const MAX_SPEED = 180.0
-const ACCELERATION = 5.0
+const MAX_SPEED = 100.0
+const ACCELERATION = 15.0
 const AIR_CONTROL = 0.5
-const FRICTION = 0.85
+const FRICTION = 0.90
 const GRAVITY = 8.0
 const JUMP_FORCE = 150.0
-const JUMP_TIME = 0.3
 
+onready var bullet_timer = $bullet_timer
+onready var bullet = preload("res://entities/bullet.tscn")
+var can_shoot = false
 
 var dx = 0
 var dy = 0
 var motion = Vector2.ZERO
-var jumpTimer = Timer.new()
+var facing = Vector2.RIGHT
+onready var jump_timer = $jump_timer
 var can_jump = false
 var snap = Vector2.ZERO
 
 var state = ""
 var busy = false
+var no_grav = false
+
+export var bullet_settings = Array()
 
 onready var body = $flip/body
 onready var flip = $flip
 
 
 func _ready():
-	jumpTimer.set_one_shot(true)
-	jumpTimer.set_wait_time(JUMP_TIME)
-	add_child(jumpTimer)
-	
+	can_shoot = true
 
 func set_state():
 	
@@ -53,7 +58,7 @@ func set_state():
 
 func set_animation():
 	if sign(PlayerInput.x_axis) != 0:
-		flip.scale.x = sign(PlayerInput.x_axis)
+		flip.scale.x = sign(PlayerInput.x_axis)	
 	return
 	match state:
 		"standing":
@@ -74,10 +79,15 @@ func set_animation():
 			body.speed_scale = abs(dx) / MAX_SPEED
 	
 func _physics_process(delta):
+	if Engine.editor_hint:
+		return
 	
 	if not busy:
 		set_state()
 		set_animation()
+	
+	if PlayerInput.dir != Vector2.ZERO:
+		facing = PlayerInput.dir
 	
 	if is_on_floor():
 		dx += PlayerInput.x_axis * ACCELERATION
@@ -91,20 +101,24 @@ func _physics_process(delta):
 		dx *= FRICTION
 		
 	if PlayerInput.jump and can_jump:
-			jumpTimer.start()
+		if not PlayerInput.down:
+			jump_timer.start()
 			dy -= JUMP_FORCE
 			can_jump = false
+		else:
+			drop()
 	
 	if is_on_ceiling():
 		print("bonk")
 		dy = max(dy,0)
-		jumpTimer.stop()
+		jump_timer.stop()
 
-	if not jumpTimer.is_stopped() and PlayerInput.jump:
+	if not jump_timer.is_stopped() and PlayerInput.jump:
 		pass
 		snap = Vector2.ZERO
 	else:
-		dy += GRAVITY
+		if not no_grav:
+			dy += GRAVITY
 		snap = Vector2(0,4)
 	
 	if abs(dx) < 1 and PlayerInput.x_axis == 0:
@@ -116,3 +130,36 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		if abs(collision.normal.y) <= .1:
 			dx = 0
+	
+	if PlayerInput.fire and bullet_timer.is_stopped():
+		bullet_timer.start()
+		fire()
+
+
+func fire():
+	var b = bullet.instance()
+	b.start(global_position, facing, bullet_settings[0])
+	get_parent().add_child(b)
+
+func drop():
+	var col = move_and_collide(Vector2.DOWN, true, true, true)
+	
+	if col.collider.collision_layer >> 4:
+		print(col.collider.collision_layer >> 4)
+		position.y += 1
+		can_jump = false
+	
+
+func _notification(what):
+	if not Engine.editor_hint:
+		return
+	
+	match what:
+		2000:
+			move_snap()
+		_:
+			pass
+
+func move_snap():
+	global_position.x = floor(global_position.x / 16) * 16
+	global_position.y = floor(global_position.y / 16) * 16

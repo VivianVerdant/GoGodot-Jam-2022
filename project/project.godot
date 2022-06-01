@@ -8,16 +8,39 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "BulletSettings",
+"language": "GDScript",
+"path": "res://entities/bullet_settings.gd"
+}, {
+"base": "Area2D",
+"class": "GameRoom",
+"language": "GDScript",
+"path": "res://room_class.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://player/player.gd"
+} ]
+_global_script_class_icons={
+"BulletSettings": "",
+"GameRoom": "",
+"Player": ""
+}
+
 [application]
 
 config/name="GoGodot Jam 2022"
-run/main_scene="res://rooms/test_room.tscn"
+run/main_scene="res://world.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 PlayerInput="*res://player/player_input.gd"
 WindowManager="*res://window_manager.gd"
+EventManager="*res://event_manager.gd"
 
 [display]
 
@@ -140,6 +163,14 @@ jump={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemies"
+2d_physics/layer_3="world"
+2d_physics/layer_4="camera"
+2d_physics/layer_5="semisolid"
 
 [node]
 

@@ -1,7 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/costume1.png" type="Texture" id=2]
+[ext_resource path="res://entities/bullet_settings.gd" type="Script" id=3]
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 3 )
+dropoff = 0.0
+damage = 1.0
+speed = 200.0
+size = 1.0
+color = Color( 1, 1, 1, 1 )
+initial_position = Vector2( 0, -32 )
+initial_velocity = Vector2( 0, 0 )
+collision_mask = 6
 
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
@@ -21,8 +33,10 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" groups=["player"]]
+collision_mask = 15
 script = ExtResource( 1 )
+bullet_settings = [ SubResource( 14 ) ]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -7, 0, -7, -43, 0, -47, 7, -43, 7, 0, 0, 0 )
@@ -34,3 +48,13 @@ frames = SubResource( 13 )
 animation = "stand"
 speed_scale = 0.5
 offset = Vector2( 0, -24 )
+
+[node name="jump_timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.3
+one_shot = true
+
+[node name="bullet_timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.25
+one_shot = true
