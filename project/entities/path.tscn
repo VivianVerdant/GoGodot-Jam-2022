@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://entities/path.gd" type="Script" id=1]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 32 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "loop"
+length = 0.6
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("path_follow:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.15, 0, 0.15, 0, 1, -0.15, 0, 0.15, 0, 0, -0.15, 0, 0.15, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6 )
+}
+
+[node name="path" type="Path2D"]
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+speed = 0.08
+preview = false
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
+playback_speed = 0.08
+anims/loop = SubResource( 2 )
+
+[node name="path_follow" type="PathFollow2D" parent="."]
+position = Vector2( 10.6209, 10.6209 )
+offset = 15.0139
+rotate = false
+
+[node name="position_2d" type="Position2D" parent="path_follow"]

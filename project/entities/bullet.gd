@@ -18,7 +18,7 @@ func _physics_process(delta):
 	if collision:
 		hit()
 		if collision.collider.has_method("hit"):
-			collision.collider.hit(position, velocity, "bullet")
+			collision.collider.hit(bullet_settings.damage, bullet_settings.owner)
 	
 func _ready():
 	pass

@@ -19,7 +19,7 @@ func _ready():
 	shape.extents = Vector2(240, 160)
 	area.position = Vector2(240, 160)
 	move_child(area, 0)
-
+	
 	
 #	if Engine.editor_hint:
 #		area.set_owner(get_tree().edited_scene_root)
