@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/melee_ground.png" type="Texture" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://player/air_frames.png" type="Texture" id=6]
 [ext_resource path="res://player/melee_air.png" type="Texture" id=7]
 [ext_resource path="res://player/melee_effect.png" type="Texture" id=8]
+[ext_resource path="res://sfx/sword_swing.sfxr" type="AudioStream" id=9]
+[ext_resource path="res://sfx/hurt_player.sfxr" type="AudioStream" id=10]
+[ext_resource path="res://entities/light.png" type="Texture" id=11]
 
 [sub_resource type="Resource" id=14]
 script = ExtResource( 3 )
@@ -71,6 +74,30 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, false, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../audio_stream_player:stream")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../audio_stream_player:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
 }
 
 [sub_resource type="Animation" id=48]
@@ -185,6 +212,20 @@ tracks/8/keys = {
 "update": 1,
 "values": [ Vector2( 1, 1 ), Vector2( 0.5, 1 ), Vector2( 0.3, 1 ), Vector2( 1, 1 ) ]
 }
+tracks/9/type = "audio"
+tracks/9/path = NodePath("../../audio_stream_player")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 9 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=15]
 resource_name = "melee ground"
@@ -297,6 +338,20 @@ tracks/8/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 1, 1 ), Vector2( 0.5, 1 ), Vector2( 0.3, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/9/type = "audio"
+tracks/9/path = NodePath("../../audio_stream_player")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 9 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=50]
@@ -422,42 +477,34 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("audio_stream_player:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("audio_stream_player:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 2 )
-region = Rect2( 96, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 2 )
-region = Rect2( 144, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 2 )
-region = Rect2( 192, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 2 )
-region = Rect2( 240, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 2 )
-region = Rect2( 288, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 2 )
-region = Rect2( 336, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 2 )
-region = Rect2( 384, 0, 48, 48 )
+[sub_resource type="Animation" id=61]
+resource_name = "none"
+length = 0.1
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 7 )
@@ -539,6 +586,42 @@ region = Rect2( 256, 0, 32, 48 )
 atlas = ExtResource( 4 )
 region = Rect2( 288, 0, 32, 48 )
 
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 2 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 2 )
+region = Rect2( 240, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 2 )
+region = Rect2( 288, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 2 )
+region = Rect2( 336, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 2 )
+region = Rect2( 384, 0, 48, 48 )
+
 [sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 32, 48 )
@@ -553,24 +636,24 @@ region = Rect2( 0, 96, 32, 48 )
 
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
-"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
-"loop": false,
-"name": "melee ground",
-"speed": 30.0
-}, {
 "frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
 "loop": false,
 "name": "melee air",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
+"loop": false,
+"name": "run",
+"speed": 30.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": false,
 "name": "stand",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
 "loop": false,
-"name": "run",
+"name": "melee ground",
 "speed": 30.0
 }, {
 "frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ) ],
@@ -628,6 +711,7 @@ max_health = 10
 
 [node name="animation_player" type="AnimationPlayer" parent="."]
 root_node = NodePath("../flip/body")
+playback_process_mode = 2
 anims/jump = SubResource( 49 )
 "anims/melee air" = SubResource( 48 )
 "anims/melee ground" = SubResource( 15 )
@@ -636,6 +720,7 @@ anims/stand = SubResource( 51 )
 
 [node name="effects_player" type="AnimationPlayer" parent="."]
 "anims/hit flash" = SubResource( 53 )
+anims/none = SubResource( 61 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -7, 0, -7, -43, 0, -47, 7, -43, 7, 0, 0, 0 )
@@ -643,13 +728,14 @@ polygon = PoolVector2Array( -7, 0, -7, -43, 0, -47, 7, -43, 7, 0, 0, 0 )
 [node name="flip" type="Node2D" parent="."]
 
 [node name="body" type="AnimatedSprite" parent="flip"]
-modulate = Color( 1, 0.699994, 0.699994, 1 )
+light_mask = 0
 frames = SubResource( 13 )
-animation = "melee ground"
+animation = "stand"
 speed_scale = 0.5
-offset = Vector2( 4, -24 )
+offset = Vector2( -5, -24 )
 
 [node name="sword" type="AnimatedSprite" parent="flip"]
+modulate = Color( 0.835294, 0.835294, 0.835294, 1 )
 position = Vector2( 0, -24 )
 frames = SubResource( 60 )
 animation = "none"
@@ -679,5 +765,20 @@ one_shot = true
 process_mode = 0
 one_shot = true
 
+[node name="audio_stream_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+bus = "sfx"
+
+[node name="light_2d" type="Light2D" parent="."]
+position = Vector2( 0, -32 )
+texture = ExtResource( 11 )
+texture_scale = 3.0
+color = Color( 0.5, 0.5, 0.5, 1 )
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_buffer_size = 512
+shadow_filter_smooth = 1.0
+
+[connection signal="animation_finished" from="effects_player" to="." method="_on_effects_player_animation_finished"]
 [connection signal="area_entered" from="flip/hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="flip/hitbox" to="." method="_on_hitbox_body_entered"]

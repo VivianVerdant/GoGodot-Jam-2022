@@ -33,8 +33,10 @@ func _ready():
 	
 
 func _physics_process(delta):
-	if sleeping or effects_player.is_playing():
+	if sleeping or effects_player.is_playing() or EventManager.paused:
 		return
+	
+	#effects_player.advance(delta)
 	
 	var pos = waypoints[0].global_position + target_offset
 	var target = global_position.direction_to(pos) * speed
@@ -59,6 +61,8 @@ func reset():
 func hit(damage, owner):
 	print("bar")
 	health -= damage
+	var knockback = owner.global_position.direction_to(global_position) * damage
+	global_position += knockback
 	if health < 0:
 		die()
 	effects_player.play("hit flash")

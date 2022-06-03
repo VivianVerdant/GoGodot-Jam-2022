@@ -33,17 +33,29 @@ size = Vector2( 16, 4 )
 [node name="actors" type="Node2D" parent="."]
 
 [node name="goon" parent="actors" instance=ExtResource( 4 )]
-position = Vector2( 332, 242 )
+position = Vector2( 384, 144 )
 speed = 75
 
 [node name="bagloon" parent="actors" instance=ExtResource( 6 )]
-position = Vector2( 96, 96 )
+position = Vector2( 336, 96 )
 speed = 75
 melee_damage = 1
 initial_health = 3
 
 [node name="position_2d" type="Position2D" parent="actors/bagloon"]
-position = Vector2( -32, -32 )
+position = Vector2( -32, 0 )
 
 [node name="position_2d2" type="Position2D" parent="actors/bagloon"]
-position = Vector2( 320, -32 )
+position = Vector2( 96, 0 )
+
+[node name="bagloon2" parent="actors" instance=ExtResource( 6 )]
+position = Vector2( 160, 160 )
+speed = 75
+melee_damage = 1
+initial_health = 3
+
+[node name="position_2d" type="Position2D" parent="actors/bagloon2"]
+position = Vector2( -48, 0 )
+
+[node name="position_2d2" type="Position2D" parent="actors/bagloon2"]
+position = Vector2( 112, 0 )

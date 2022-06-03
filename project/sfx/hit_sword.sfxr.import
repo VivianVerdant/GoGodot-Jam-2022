@@ -1,0 +1,14 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamSample"
+path="res://.import/hit_sword.sfxr-01c5ef7942b705d654d96d8afbba8212.sample"
+
+[deps]
+
+source_file="res://sfx/hit_sword.sfxr"
+dest_files=[ "res://.import/hit_sword.sfxr-01c5ef7942b705d654d96d8afbba8212.sample" ]
+
+[params]
+
+loop=false

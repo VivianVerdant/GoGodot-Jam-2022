@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://gfx/logo.png" type="Texture" id=2]
+[ext_resource path="res://theme.tres" type="Theme" id=3]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.375, 0.38, 0.62, 0.625 )
+colors = PoolColorArray( 0, 0, 0, 0, 0, 0, 0, 0.882353, 0, 0, 0, 0.882353, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 3 )
+width = 480
+
+[node name="menu" type="Control"]
+light_mask = 0
+
+[node name="color_rect" type="TextureRect" parent="."]
+light_mask = 0
+margin_right = 480.0
+margin_bottom = 320.0
+texture = SubResource( 2 )
+expand = true
+
+[node name="center_container" type="CenterContainer" parent="."]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 480.0
+margin_bottom = 320.0
+theme = ExtResource( 3 )
+
+[node name="v_box_container" type="VBoxContainer" parent="center_container"]
+light_mask = 0
+margin_left = 112.0
+margin_top = 66.0
+margin_right = 368.0
+margin_bottom = 254.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+alignment = 1
+
+[node name="texture_rect" type="TextureRect" parent="center_container/v_box_container"]
+light_mask = 0
+margin_right = 256.0
+margin_bottom = 128.0
+texture = ExtResource( 2 )
+
+[node name="v_box_container" type="VBoxContainer" parent="center_container/v_box_container"]
+light_mask = 0
+margin_left = 74.0
+margin_top = 132.0
+margin_right = 181.0
+margin_bottom = 188.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="texture_button" type="Button" parent="center_container/v_box_container/v_box_container"]
+light_mask = 0
+margin_right = 107.0
+margin_bottom = 26.0
+shortcut_in_tooltip = false
+text = "New Game"
+
+[node name="texture_button2" type="Button" parent="center_container/v_box_container/v_box_container"]
+light_mask = 0
+margin_top = 30.0
+margin_right = 107.0
+margin_bottom = 56.0
+shortcut_in_tooltip = false
+text = "Quit"

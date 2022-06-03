@@ -2,7 +2,7 @@ tool
 class_name Player
 extends KinematicBody2D
 
-const MAX_SPEED = 100.0
+const MAX_SPEED = 150.0
 const ACCELERATION = 15.0
 const AIR_CONTROL = 0.5
 const FRICTION = 0.90
@@ -36,12 +36,17 @@ var no_grav = false
 onready var body = $flip/body
 onready var flip = $flip
 onready var animation_player = $animation_player
-
+onready var audio_player = $audio_stream_player
 onready var effects_player = $effects_player
+
+
+signal ui_update_health(value)
+signal ui_update_energy(value)
 
 func _ready():
 	can_shoot = true
 	curr_health = max_health
+	
 
 func set_state():
 	if state == "melee":
@@ -63,6 +68,7 @@ func set_state():
 		dy = min(dy,0)
 		
 	else:
+		can_jump = false
 		if dy > 0:
 			state = "falling"
 		else:
@@ -109,10 +115,14 @@ func set_animation():
 				animation_player.seek(f, true)
 	
 func _physics_process(delta):
-	if Engine.editor_hint:
+	if Engine.editor_hint or EventManager.paused:
 		return
 	
 	set_animation()
+	
+	animation_player.advance(delta)
+	#effects_player.advance(delta)
+	
 	if not busy:
 		set_state()
 	
@@ -135,6 +145,8 @@ func _physics_process(delta):
 			jump_timer.start()
 			dy -= JUMP_FORCE
 			can_jump = false
+			audio_player.stream = preload("res://sfx/jump.sfxr")
+			audio_player.play()
 		else:
 			drop()
 	
@@ -177,20 +189,24 @@ func _on_hitbox_area_entered(area):
 	
 func hit(damage, owner):
 	if hit_timer.is_stopped():
-		#print("ow")
+		curr_health -= damage
+		
+		print(str(curr_health) + ":" + str(max_health))
+		emit_signal("ui_update_health", (curr_health as float)/(max_health as float))
 		effects_player.play("hit flash")
 		hit_timer.start()
-		var knockback = owner.global_position.direction_to(global_position + Vector2(0.0, -32.0)) * damage * 350.0
-		dx += knockback.x
-		dy += knockback.y
+		var knockback = owner.global_position.direction_to(global_position) * damage * 16.0
+		dx = knockback.x
+		dy = knockback.y
+		move_and_collide(knockback)
 		snap = Vector2.ZERO
 		
-		curr_health -= damage
-		if curr_health < 0:
+		if curr_health <= 0:
 			die()
 
 func die():
-	print("dead")
+	EventManager.emit_signal("player_death")
+	queue_free()
 
 func fire():
 	var b = bullet.instance()
@@ -219,3 +235,8 @@ func _notification(what):
 func move_snap():
 	global_position.x = floor(global_position.x / 16) * 16
 	global_position.y = floor(global_position.y / 16) * 16
+
+
+func _on_effects_player_animation_finished(anim_name):
+	if anim_name == "hit_flash":
+		effects_player.play("none")

@@ -23,8 +23,6 @@ func _ready():
 	#OS.window_maximized = true
 
 func _input(event):
-
-	menu = Input.is_action_pressed("menu")
 	
 	left = Input.is_action_pressed("left")
 	right = Input.is_action_pressed("right")

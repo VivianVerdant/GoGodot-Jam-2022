@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=140 format=2]
+[gd_resource type="TileSet" load_steps=181 format=2]
 
 [ext_resource path="res://gfx/tilemap1.png" type="Texture" id=1]
 [ext_resource path="res://gfx/semisolids.png" type="Texture" id=2]
@@ -247,6 +247,129 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 3, 0, 3 )
 
 [sub_resource type="ConvexPolygonShape2D" id=81]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 3, 0, 3 )
+
+[sub_resource type="OccluderPolygon2D" id=136]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=137]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=138]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=139]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=140]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=141]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=142]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=143]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=144]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=145]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=146]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=147]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=148]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=149]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=150]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=151]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=152]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=153]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=154]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=155]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=156]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=157]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=158]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=159]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=160]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=161]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=162]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=163]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=164]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=165]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=166]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=167]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=168]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=169]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=170]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=171]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=172]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=173]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=174]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=175]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=176]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=82]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -950,7 +1073,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 2/autotile/icon_coordinate = Vector2( 0, 0 )
 2/autotile/tile_size = Vector2( 16, 16 )
 2/autotile/spacing = 1
-2/autotile/occluder_map = [  ]
+2/autotile/occluder_map = [ Vector2( 0, 0 ), SubResource( 136 ), Vector2( 0, 1 ), SubResource( 137 ), Vector2( 0, 2 ), SubResource( 138 ), Vector2( 1, 0 ), SubResource( 139 ), Vector2( 1, 1 ), SubResource( 140 ), Vector2( 1, 2 ), SubResource( 141 ), Vector2( 2, 0 ), SubResource( 142 ), Vector2( 2, 1 ), SubResource( 143 ), Vector2( 2, 2 ), SubResource( 144 ), Vector2( 6, 0 ), SubResource( 145 ), Vector2( 6, 1 ), SubResource( 146 ), Vector2( 6, 2 ), SubResource( 147 ), Vector2( 7, 0 ), SubResource( 148 ), Vector2( 7, 1 ), SubResource( 149 ), Vector2( 7, 2 ), SubResource( 150 ), Vector2( 8, 0 ), SubResource( 151 ), Vector2( 8, 1 ), SubResource( 152 ), Vector2( 8, 2 ), SubResource( 153 ), Vector2( 9, 0 ), SubResource( 154 ), Vector2( 9, 1 ), SubResource( 155 ), Vector2( 10, 0 ), SubResource( 156 ), Vector2( 10, 1 ), SubResource( 157 ), Vector2( 13, 0 ), SubResource( 158 ), Vector2( 13, 1 ), SubResource( 159 ), Vector2( 14, 0 ), SubResource( 160 ), Vector2( 14, 1 ), SubResource( 161 ), Vector2( 15, 0 ), SubResource( 162 ), Vector2( 15, 1 ), SubResource( 163 ), Vector2( 15, 2 ), SubResource( 164 ), Vector2( 16, 0 ), SubResource( 165 ), Vector2( 16, 1 ), SubResource( 166 ), Vector2( 16, 2 ), SubResource( 167 ), Vector2( 17, 0 ), SubResource( 168 ), Vector2( 17, 1 ), SubResource( 169 ), Vector2( 17, 2 ), SubResource( 170 ), Vector2( 18, 0 ), SubResource( 171 ), Vector2( 18, 1 ), SubResource( 172 ), Vector2( 18, 2 ), SubResource( 173 ), Vector2( 19, 0 ), SubResource( 174 ), Vector2( 19, 1 ), SubResource( 175 ), Vector2( 19, 2 ), SubResource( 176 ) ]
 2/autotile/navpoly_map = [  ]
 2/autotile/priority_map = [  ]
 2/autotile/z_index_map = [  ]

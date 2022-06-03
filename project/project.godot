@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GoGodot Jam 2022"
-run/main_scene="res://world.tscn"
+run/main_scene="res://game.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -41,6 +41,7 @@ config/icon="res://icon.png"
 PlayerInput="*res://player/player_input.gd"
 WindowManager="*res://window_manager.gd"
 EventManager="*res://event_manager.gd"
+Menu="*res://menu.tscn"
 
 [display]
 
@@ -49,6 +50,10 @@ window/size/height=320
 window/size/test_width=960
 window/size/test_height=640
 window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/gdfxr/plugin.cfg" )
 
 [importer_defaults]
 
@@ -183,6 +188,8 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"

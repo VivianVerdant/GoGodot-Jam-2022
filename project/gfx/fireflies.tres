@@ -1,0 +1,84 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float radius = 0.02;
+uniform float sphere_Counts = 20.0;
+uniform vec2 scale = vec2(1.,1.);
+uniform vec2 offset = vec2(0.,0.);
+uniform float speed = 1.;
+uniform float gamma = 1.;
+uniform float falloff = 0.;
+uniform vec4 color: hint_color = vec4(1.);
+uniform float color_varyance = 0.;
+uniform bool sinx = true;
+uniform bool siny = true;
+uniform int seed = 1;
+uniform float cut_alpha: hint_range(0., 10.) = 0.;
+
+float N21(vec2 p) {
+	vec3 a = fract(vec3(p.xyx) * vec3(213.897, 653.453, 253.098));
+	a += vec3(sin(1.5*float(seed)));
+    a += dot(a, a.yzx + 79.76);
+    return fract((a.x + a.y) * a.z);
+}
+
+vec3 N22(vec2 p){
+    float n = N21(p);
+    return vec3(n,N21(n+p),N21(p));
+}
+
+
+void fragment() {
+    
+	
+	vec2 uv = UV + offset - vec2(.5);
+    float time = TIME * speed;
+	
+
+    vec3 pointLight;
+	float alpha;
+    for (float i=0.0; i<sphere_Counts; i+=1.0)
+    {
+        vec3 rnd = N22(vec2(i,i*2.0));
+		
+		
+    	vec2 point;
+		if (sinx){
+			point.x = sin(time*rnd.x+i)*rnd.y*scale.x;
+		}else{
+			point.x = tan(time*rnd.x+i)*rnd.y*scale.x;
+		}
+		if (siny){
+			point.y = cos(time*rnd.y+i)*rnd.x*scale.y;
+		}else{
+			point.y = -tan(time*rnd.y+i)*rnd.x*scale.y;
+		}
+		
+		
+    	float distanceToPoint = pow(distance(uv, point),gamma);
+		distanceToPoint += falloff*distance(uv, point);
+    	pointLight += vec3(radius/distanceToPoint)*vec3(sin(time+i)/2.5+0.7)*abs(color.rgb+(vec3(1.)-rnd*vec3(color_varyance)));
+		alpha = (pointLight.x+pointLight.y+pointLight.z)/3.;
+		if (cut_alpha != 0.){
+			alpha = 1.-step(alpha,cut_alpha);
+		}
+    }
+
+    /*
+    vec3 pointLight2;
+    for (float i=60.0; i<80.0;i+=1.0)
+    {
+        vec2 rnd = N22(vec2(i,i+2.0));
+    	vec2 point = vec2(cos(time*rnd.x+i)*1.5,sin(time*rnd.y+i));
+    	float distanceToPoint = distance(uv, point);
+    	pointLight2 += vec3(radius/distanceToPoint) * vec3(clamp(sin(time+i)/2.0+0.6,0.1,1.0));
+    }
+    pointLight2 *= vec3(0.5,0.8,0.5);
+   	pointLight += pointLight2;
+    */
+    alpha = clamp(pow(alpha,1.25)-.1,0.,20.);
+    COLOR = clamp(vec4(pointLight,alpha),0.,20.);
+}
+"
