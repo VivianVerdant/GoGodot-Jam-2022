@@ -6,13 +6,18 @@ var to
 var from
 onready var tween = $tween
 
+var player
+
 func _ready():
 	EventManager.connect("room_entered", self, "set_target_room")
-	
+	if get_tree().get_nodes_in_group("player").size() > 0:
+		player = get_tree().get_nodes_in_group("player")[0]
 
 func set_target_room(room):
 	from = to
 	to = room
+	
+	player.busy = true
 	
 	tween.interpolate_property(self, "position", 
 		self.position, to.position + OFFSET, .66, 
@@ -29,3 +34,4 @@ func _on_tween_all_completed():
 		from.exited()
 	if to and to.has_method("entered"):
 		to.entered()
+	player.busy = false

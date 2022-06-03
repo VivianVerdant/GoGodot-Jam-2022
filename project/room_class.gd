@@ -25,12 +25,12 @@ func _ready():
 #		area.set_owner(get_tree().edited_scene_root)
 
 func entered():
-	print("entered")
+	#print("entered")
 	for node in actors.get_children():
 		node.sleeping = false
 	
 func exited():
-	print("exited")
+	#print("exited")
 	for node in actors.get_children():
 		if node.has_method("reset"):
 			node.reset()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/melee_ground.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://player/standing.png" type="Texture" id=5]
 [ext_resource path="res://player/air_frames.png" type="Texture" id=6]
 [ext_resource path="res://player/melee_air.png" type="Texture" id=7]
+[ext_resource path="res://player/melee_effect.png" type="Texture" id=8]
 
 [sub_resource type="Resource" id=14]
 script = ExtResource( 3 )
@@ -119,7 +120,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.05, 0.15, 0.166667 ),
+"times": PoolRealArray( 0, 0.05, 0.2, 0.216667 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, true, false ]
@@ -135,6 +136,54 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../sword:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "sword", "none" ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../sword:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.0500001, 0.1, 0.15, 0.283333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3, 5 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../hitbox:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.05, 0.1, 0.15, 0.216667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 28, 0 ), Vector2( 13, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../hitbox:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.05, 0.1, 0.15, 0.216667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 1 ), Vector2( 0.3, 1 ), Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -184,7 +233,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.05, 0.15, 0.166667 ),
+"times": PoolRealArray( 0, 0.05, 0.2, 0.216667 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, true, false ]
@@ -200,6 +249,54 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../sword:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "sword", "none" ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../sword:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.283333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3, 5 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../hitbox:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.05, 0.1, 0.15, 0.216667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 28, 0 ), Vector2( 13, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../hitbox:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.05, 0.1, 0.15, 0.216667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 1 ), Vector2( 0.3, 1 ), Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=50]
@@ -402,18 +499,6 @@ region = Rect2( 384, 0, 48, 48 )
 atlas = ExtResource( 7 )
 region = Rect2( 432, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=35]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=36]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 48, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=37]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 96, 32, 48 )
-
 [sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 32, 48 )
@@ -454,35 +539,85 @@ region = Rect2( 256, 0, 32, 48 )
 atlas = ExtResource( 4 )
 region = Rect2( 288, 0, 32, 48 )
 
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 48, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 96, 32, 48 )
+
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
 "frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
-"loop": true,
+"loop": false,
 "name": "melee ground",
 "speed": 30.0
 }, {
 "frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
-"loop": true,
+"loop": false,
 "name": "melee air",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ) ],
-"loop": true,
-"name": "jump",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ) ],
-"loop": true,
+"loop": false,
 "name": "stand",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
-"loop": true,
+"loop": false,
 "name": "run",
 "speed": 30.0
+}, {
+"frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ) ],
+"loop": false,
+"name": "jump",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 96, 48 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 8 )
+region = Rect2( 96, 0, 96, 48 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 8 )
+region = Rect2( 192, 0, 96, 48 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 8 )
+region = Rect2( 288, 0, 96, 48 )
+
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 8 )
+region = Rect2( 384, 0, 96, 48 )
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 8 )
+region = Rect2( 480, 0, 96, 48 )
+
+[sub_resource type="SpriteFrames" id=60]
+animations = [ {
+"frames": [  ],
+"loop": false,
+"name": "none",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
+"loop": false,
+"name": "sword",
+"speed": 60.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=52]
+extents = Vector2( 43, 11 )
 
 [node name="player" type="KinematicBody2D" groups=["player"]]
 collision_mask = 4
@@ -508,11 +643,17 @@ polygon = PoolVector2Array( -7, 0, -7, -43, 0, -47, 7, -43, 7, 0, 0, 0 )
 [node name="flip" type="Node2D" parent="."]
 
 [node name="body" type="AnimatedSprite" parent="flip"]
+modulate = Color( 1, 0.699994, 0.699994, 1 )
 frames = SubResource( 13 )
-animation = "melee air"
-frame = 8
+animation = "melee ground"
 speed_scale = 0.5
-offset = Vector2( 3, -24 )
+offset = Vector2( 4, -24 )
+
+[node name="sword" type="AnimatedSprite" parent="flip"]
+position = Vector2( 0, -24 )
+frames = SubResource( 60 )
+animation = "none"
+offset = Vector2( 16, 0 )
 
 [node name="hitbox" type="Area2D" parent="flip"]
 collision_layer = 0
@@ -521,7 +662,7 @@ monitoring = false
 monitorable = false
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="flip/hitbox"]
-position = Vector2( 17, -27 )
+position = Vector2( 11, -27 )
 shape = SubResource( 52 )
 
 [node name="jump_timer" type="Timer" parent="."]
@@ -538,4 +679,5 @@ one_shot = true
 process_mode = 0
 one_shot = true
 
+[connection signal="area_entered" from="flip/hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="flip/hitbox" to="." method="_on_hitbox_body_entered"]

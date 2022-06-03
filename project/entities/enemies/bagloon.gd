@@ -33,7 +33,7 @@ func _ready():
 	
 
 func _physics_process(delta):
-	if sleeping:
+	if sleeping or effects_player.is_playing():
 		return
 	
 	var pos = waypoints[0].global_position + target_offset
@@ -57,6 +57,7 @@ func reset():
 	position = initial_pos
 
 func hit(damage, owner):
+	print("bar")
 	health -= damage
 	if health < 0:
 		die()
@@ -67,5 +68,8 @@ func die():
 	visible = false
 
 func _on_hitbox_body_entered(body):
+	if sleeping:
+		return
+	
 	if body.has_method("hit"):
 		body.hit(melee_damage, self)

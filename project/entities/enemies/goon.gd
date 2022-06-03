@@ -27,8 +27,9 @@ func _ready():
 		target = get_tree().get_nodes_in_group("player")[0]
 
 func _physics_process(_delta):
-	if sleeping:
+	if sleeping or effects_player.is_playing():
 		return
+	
 	dxdy = global_position.direction_to(target.global_position+target_offset) * speed 
 	move_and_slide(dxdy)
 
@@ -54,5 +55,7 @@ func die():
 
 
 func _on_hitbox_body_entered(body):
+	if sleeping:
+		return
 	if body.has_method("hit"):
 		body.hit(melee_damage, self)

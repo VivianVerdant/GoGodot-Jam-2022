@@ -170,11 +170,21 @@ func _on_hitbox_body_entered(body):
 	if body.has_method("hit"):
 		body.hit(melee_damage, self)
 
+func _on_hitbox_area_entered(area):
+	if area.has_method("hit"):
+		print(area)
+		area.hit(melee_damage, self)
+	
 func hit(damage, owner):
-	print("ow")
 	if hit_timer.is_stopped():
+		#print("ow")
 		effects_player.play("hit flash")
 		hit_timer.start()
+		var knockback = owner.global_position.direction_to(global_position + Vector2(0.0, -32.0)) * damage * 350.0
+		dx += knockback.x
+		dy += knockback.y
+		snap = Vector2.ZERO
+		
 		curr_health -= damage
 		if curr_health < 0:
 			die()
@@ -209,5 +219,3 @@ func _notification(what):
 func move_snap():
 	global_position.x = floor(global_position.x / 16) * 16
 	global_position.y = floor(global_position.y / 16) * 16
-
-
