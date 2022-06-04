@@ -43,3 +43,11 @@ func _process(_delta):
 
 func _on_quit_button_pressed():
 	get_tree().quit()
+
+
+func _on_viv_pressed():
+	OS.shell_open("https://twitter.com/VivianVerdant")
+
+
+func _on_may_pressed():
+	OS.shell_open("https://twitter.com/prierchan")
